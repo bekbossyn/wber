@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 update();
+
             }
         });
 
@@ -154,13 +155,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        update();
+//        update();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
     }
 
     public void update(){
@@ -241,6 +241,5 @@ public class MainActivity extends AppCompatActivity {
             prefs.edit().putString(MainActivity.update_time, update_time_sp).apply();
         }
     }
-
 }
 
