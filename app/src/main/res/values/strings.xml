@@ -2,6 +2,7 @@
     <string name="app_name" translatable="false">wber</string>
     <string name="sending">Current sending rate</string>
     <string name="update_time">Last update time</string>
+    <string name="updated_button">Updated</string>
     <string name="update_button">Update</string>
     <string name="result" translatable="false">0 $</string>
     <string name="number" translatable="false">10000</string>

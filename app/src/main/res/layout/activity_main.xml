@@ -77,15 +77,13 @@
     <Button
         android:id="@+id/update_button"
 
-        style="@style/Widget.AppCompat.Button.Colored"
-
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="16dp"
         android:text="@string/update_button"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

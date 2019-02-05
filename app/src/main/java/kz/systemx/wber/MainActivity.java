@@ -1,6 +1,7 @@
 package kz.systemx.wber;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,6 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    String result = null;
     JSONObject jObject;
     double aJsonDouble;
     String aJsonStr;
@@ -146,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 update();
-
             }
         });
 
@@ -155,6 +154,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        mUpdateButton = (Button) findViewById(R.id.update_button);
+        mUpdateButton.setText(R.string.update_button);
+        mUpdateButton.setBackgroundColor(Color.RED);
 //        update();
     }
 
@@ -170,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
         httpget.setHeader("Content-type", "application/json");
 
         InputStream inputStream = null;
+        String result = null;
         try {
             HttpResponse response = httpclient.execute(httpget);
             HttpEntity entity = response.getEntity();
@@ -194,7 +197,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (result == null) {
-
             // NO INTERNET
             Log.d("wber_app", "No Internet");
             SharedPreferences prefs = getSharedPreferences(CHAT_PREFS, MODE_PRIVATE);
@@ -209,6 +211,9 @@ public class MainActivity extends AppCompatActivity {
             sending.setText(this.getString(R.string.sending) + ":  " + exchange_rate_sp);
             TextView update_time = (TextView) findViewById(R.id.update_time);
             update_time.setText(this.getString(R.string.update_time) + ":  " + update_time_sp);
+            mUpdateButton = (Button) findViewById(R.id.update_button);
+            mUpdateButton.setText(R.string.update_button);
+            mUpdateButton.setBackgroundColor(Color.RED);
 
         } else {
             try {
@@ -239,6 +244,10 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences prefs = getSharedPreferences(CHAT_PREFS, 0);
             prefs.edit().putString(MainActivity.exchange_rate, exchange_rate_sp).apply();
             prefs.edit().putString(MainActivity.update_time, update_time_sp).apply();
+            mUpdateButton = (Button) findViewById(R.id.update_button);
+            mUpdateButton.setText(R.string.updated_button);
+            mUpdateButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+//            mUpdateButton.setTextColor(getResources().getColor(R.color.yellow));
         }
     }
 }
