@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
                     mTaxes.setText(String.valueOf(taxes) + " $");
                 }
             }
-
         });
 
         mUpdateButton = (Button) findViewById(R.id.update_button);
@@ -154,10 +153,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mUpdateButton = (Button) findViewById(R.id.update_button);
-        mUpdateButton.setText(R.string.update_button);
-        mUpdateButton.setBackgroundColor(Color.RED);
-//        update();
     }
 
     @Override
@@ -247,7 +242,6 @@ public class MainActivity extends AppCompatActivity {
             mUpdateButton = (Button) findViewById(R.id.update_button);
             mUpdateButton.setText(R.string.updated_button);
             mUpdateButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-//            mUpdateButton.setTextColor(getResources().getColor(R.color.yellow));
         }
     }
 }
