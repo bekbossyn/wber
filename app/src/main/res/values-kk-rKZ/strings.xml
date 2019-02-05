@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">wber</string>
+    <string name="sending">Қазіргі жіберу курсы</string>
+    <string name="update_time">Соңғы жаңарту уақыты</string>
+    <string name="update_button">Жаңарту</string>
+</resources>

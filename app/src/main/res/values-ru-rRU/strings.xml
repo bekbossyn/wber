@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">wber</string>
+    <string name="update_button">Обновить</string>
+    <string name="update_time">Последнее обновление</string>
+    <string name="sending">Текущий курс отправки</string>
+</resources>
