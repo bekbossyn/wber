@@ -1,5 +1,6 @@
 package kz.systemx.wber;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     TextView mTaxes;
     TextView mResult;
     TextView mSendingRate;
+
+    public static final String CHAT_PREFS = "ChatPrefs";
+    public static final String exchange_rate = "exchange_rate";
+    public static final String update_time = "update_time";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,31 +189,58 @@ public class MainActivity extends AppCompatActivity {
             Log.d("wber_app", e.toString());
         }
         finally {
-            try{if(inputStream != null)inputStream.close();}catch(Exception squish){}
+            try{if(inputStream != null)inputStream.close();}
+            catch(Exception squish){}
         }
 
-        try {
-            jObject = new JSONObject(result);
+        if (result == null) {
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            aJsonDouble = jObject.getDouble("sending");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            // NO INTERNET
+            Log.d("wber_app", "No Internet");
+            SharedPreferences prefs = getSharedPreferences(CHAT_PREFS, MODE_PRIVATE);
 
-        try {
-            aJsonStr = jObject.getString("data_and_time");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        TextView sending = (TextView) findViewById(R.id.sending);
-        sending.setText(this.getString(R.string.sending) + ":  " + Double.toString(aJsonDouble));
+            String exchange_rate_sp = prefs.getString(MainActivity.exchange_rate, null);
+            String update_time_sp = prefs.getString(MainActivity.update_time, null);
 
-        TextView update_time = (TextView) findViewById(R.id.update_time);
-        update_time.setText(this.getString(R.string.update_time) + ":  " + aJsonStr);
+            if (exchange_rate_sp == null) {
+                exchange_rate_sp = "NO INTERNET";
+            }
+            TextView sending = (TextView) findViewById(R.id.sending);
+            sending.setText(this.getString(R.string.sending) + ":  " + exchange_rate_sp);
+            TextView update_time = (TextView) findViewById(R.id.update_time);
+            update_time.setText(this.getString(R.string.update_time) + ":  " + update_time_sp);
+
+        } else {
+            try {
+                jObject = new JSONObject(result);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            try {
+                aJsonDouble = jObject.getDouble("sending");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                aJsonStr = jObject.getString("data_and_time");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            TextView sending = (TextView) findViewById(R.id.sending);
+            sending.setText(this.getString(R.string.sending) + ":  " + Double.toString(aJsonDouble));
+
+            TextView update_time = (TextView) findViewById(R.id.update_time);
+            update_time.setText(this.getString(R.string.update_time) + ":  " + aJsonStr);
+
+            // saving data
+            String exchange_rate_sp = Double.toString(aJsonDouble);
+            String update_time_sp = aJsonStr;
+            SharedPreferences prefs = getSharedPreferences(CHAT_PREFS, 0);
+            prefs.edit().putString(MainActivity.exchange_rate, exchange_rate_sp).apply();
+            prefs.edit().putString(MainActivity.update_time, update_time_sp).apply();
+        }
     }
+
 }
 
