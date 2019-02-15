@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void update(){
         DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
-        HttpGet httpget = new HttpGet("http://159.65.15.112/api/v1/core/converter");
+        HttpGet httpget = new HttpGet("http://159.65.15.112/api/v1/core/converter_v2");
         // Depends on your web service
         httpget.setHeader("Content-type", "application/json");
 
