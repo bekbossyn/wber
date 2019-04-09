@@ -29,12 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
     JSONObject jObject;
     double aJsonDouble;
+    double halykDouble;
     String aJsonStr;
     Button mUpdateButton;
     TextView mNumberToSend;
     TextView mTaxes;
     TextView mResult;
     TextView mSendingRate;
+    TextView mHalykTotal;
+
 
     public static final String CHAT_PREFS = "ChatPrefs";
     public static final String exchange_rate = "exchange_rate";
@@ -89,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                     if (final_result < 0) {
                         final_result = 0;
                     }
+
+                    //TODO
+                    //count textview mHalykTotal
+
                     DecimalFormat df = new DecimalFormat("#.##");
                     mResult.setText(String.valueOf(df.format(final_result)) + " $");
                     mTaxes.setText(String.valueOf(taxes) + " $");
@@ -133,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
                     if (final_result < 0) {
                         final_result = 0;
                     }
+
+                    //TODO
+                    //count textview mHalykTotal
+
                     DecimalFormat df = new DecimalFormat("#.##");
                     mResult.setText(String.valueOf(df.format(final_result)) + " $");
                     mTaxes.setText(String.valueOf(taxes) + " $");
@@ -223,12 +234,21 @@ public class MainActivity extends AppCompatActivity {
             }
 
             try {
+                halykDouble = jObject.getDouble("receiving");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
                 aJsonStr = jObject.getString("data_and_time");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             TextView sending = (TextView) findViewById(R.id.sending);
             sending.setText(this.getString(R.string.sending) + ":  " + Double.toString(aJsonDouble));
+
+            //TODO
+            //set textview of halykbank rate called halyk_bank_rate
 
             TextView update_time = (TextView) findViewById(R.id.update_time);
             update_time.setText(this.getString(R.string.update_time) + ":  " + aJsonStr);
