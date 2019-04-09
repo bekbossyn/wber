@@ -36,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
     TextView mTaxes;
     TextView mResult;
     TextView mSendingRate;
-    TextView mHalykTotal;
+    TextView mResultHalyk;
 
 
     public static final String CHAT_PREFS = "ChatPrefs";
     public static final String exchange_rate = "exchange_rate";
+    public static final String exchange_rate_halyk = "exchange_rate_halyk";
     public static final String update_time = "update_time";
 
     @Override
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         mTaxes = (TextView) findViewById(R.id.taxes);
         mSendingRate = (TextView) findViewById(R.id.sending);
         mResult = (TextView) findViewById(R.id.result);
+        mResultHalyk = (TextView) findViewById(R.id.result_halyk);
+
         mNumberToSend.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -94,7 +97,11 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     //TODO
-                    //count textview mHalykTotal
+                    //count textview mResultHalyk
+                    DecimalFormat dff = new DecimalFormat("#.##");
+                    String temp_str = getResources().getString(R.string.halyk_text);
+                    String temp_str1 = getResources().getString(R.string.halyk_tenge);
+                            mResultHalyk.setText(temp_str + " " + String.valueOf(halykDouble) + " " + temp_str1 + " " + String.valueOf(dff.format(halykDouble * final_result)) + " ₸");
 
                     DecimalFormat df = new DecimalFormat("#.##");
                     mResult.setText(String.valueOf(df.format(final_result)) + " $");
@@ -142,7 +149,11 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     //TODO
-                    //count textview mHalykTotal
+                    //count textview mResultHalyk
+                    DecimalFormat dff = new DecimalFormat("#.##");
+                    String temp_str = getResources().getString(R.string.halyk_text);
+                    String temp_str1 = getResources().getString(R.string.halyk_tenge);
+                    mResultHalyk.setText(temp_str + " " + String.valueOf(halykDouble) + " " + temp_str1 + " " + String.valueOf(dff.format(halykDouble * final_result)) + " ₸");
 
                     DecimalFormat df = new DecimalFormat("#.##");
                     mResult.setText(String.valueOf(df.format(final_result)) + " $");
@@ -208,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences prefs = getSharedPreferences(CHAT_PREFS, MODE_PRIVATE);
 
             String exchange_rate_sp = prefs.getString(MainActivity.exchange_rate, null);
+            String exchange_rate_halyk_sp = prefs.getString(MainActivity.exchange_rate_halyk, null);
             String update_time_sp = prefs.getString(MainActivity.update_time, null);
 
             if (exchange_rate_sp == null) {
@@ -217,6 +229,8 @@ public class MainActivity extends AppCompatActivity {
             sending.setText(this.getString(R.string.sending) + ":  " + exchange_rate_sp);
             TextView update_time = (TextView) findViewById(R.id.update_time);
             update_time.setText(this.getString(R.string.update_time) + ":  " + update_time_sp);
+            TextView result_halyk = (TextView) findViewById(R.id.result_halyk);
+            result_halyk.setText(this.getString(R.string.result_halyk) + ":  " + exchange_rate_halyk_sp);
             mUpdateButton = (Button) findViewById(R.id.update_button);
             mUpdateButton.setText(R.string.update_button);
             mUpdateButton.setBackgroundColor(Color.RED);
@@ -255,10 +269,12 @@ public class MainActivity extends AppCompatActivity {
 
             // saving data
             String exchange_rate_sp = Double.toString(aJsonDouble);
+            String exchange_rate_halyk_sp = Double.toString(halykDouble);
             String update_time_sp = aJsonStr;
             SharedPreferences prefs = getSharedPreferences(CHAT_PREFS, 0);
             prefs.edit().putString(MainActivity.exchange_rate, exchange_rate_sp).apply();
             prefs.edit().putString(MainActivity.update_time, update_time_sp).apply();
+            prefs.edit().putString(MainActivity.exchange_rate_halyk, exchange_rate_halyk_sp).apply();
             mUpdateButton = (Button) findViewById(R.id.update_button);
             mUpdateButton.setText(R.string.updated_button);
             mUpdateButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));

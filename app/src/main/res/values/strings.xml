@@ -5,6 +5,9 @@
     <string name="updated_button">Updated</string>
     <string name="update_button">Update</string>
     <string name="result" translatable="false">0 $</string>
+    <string name="result_halyk" translatable="false">0 ₸</string>
+    <string name="halyk_text">Rate : </string>
+    <string name="halyk_tenge">in Tenge :</string>
     <string name="number" translatable="false">10000</string>
     <string name="taxes" translatable="false">10 $</string>
     <string name="current_rate" translatable="false">1000</string>

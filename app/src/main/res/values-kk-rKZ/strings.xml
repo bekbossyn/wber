@@ -5,4 +5,6 @@
     <string name="update_time">Соңғы жаңарту уақыты</string>
     <string name="update_button">Жаңарту</string>
     <string name="updated_button">Жаңартылды</string>
+    <string name="halyk_text" translatable="false">Бағам :</string>
+    <string name="halyk_tenge">Тенгеде :</string>
 </resources>
