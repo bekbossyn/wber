@@ -162,101 +162,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mResultHalyk.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String value = s.toString();
-
-                if (value.equals("") || (value.length() == 1 && !(value.charAt(0) >= '0' && value.charAt(0)<='9'))) {
-                    mResultHalyk.setText("0 ₸");
-                } else {
-                    int number_to_send = Integer.parseInt(mNumberToSend.getText().toString());
-                    String str = mSendingRate.getText().toString();
-                    while (str.charAt(0) != '1'){
-                        str = str.substring(1);
-                    }
-                    double sending_rate = Double.valueOf(str);
-                    int taxes = 10;
-                    double result = (number_to_send * 1.0)/sending_rate;
-                    if (result < 500.01) {
-                        taxes = 10;
-                    } else if (result < 2000.01) {
-                        taxes = 14;
-                    } else if (result < 3000.01) {
-                        taxes = 18;
-                    } else if (result < 5000.01) {
-                        taxes = 20;
-                    } else {
-                        taxes = 25;
-                    }
-
-                    double final_result = result - taxes;
-                    if (final_result < 0) {
-                        final_result = 0;
-                    }
-
-                    //TODO
-                    //count textview mResultHalyk
-                    DecimalFormat dff = new DecimalFormat("#.##");
-                    String temp_str = getResources().getString(R.string.halyk_text);
-                    String temp_str1 = getResources().getString(R.string.halyk_tenge);
-                    mResultHalyk.setText(temp_str + " " + String.valueOf(halykDouble) + " " + temp_str1 + " " + String.valueOf(dff.format(halykDouble * final_result)) + " ₸");
-
-//                    DecimalFormat df = new DecimalFormat("#.##");
-//                    mResult.setText(String.valueOf(df.format(final_result)) + " $");
-//                    mTaxes.setText(String.valueOf(taxes) + " $");
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(final CharSequence s, int start, int before, int count){
-                Log.d("Wber_app", "start:" + start + " s:" + s + " before:" + before + " count:" + count);
-                String value = s.toString();
-
-                if (value.equals("") || (value.length() == 1 && !(value.charAt(0) >= '0' && value.charAt(0)<='9'))) {
-                    mResultHalyk.setText("0 ₸");
-                } else {
-                    int number_to_send = Integer.parseInt(mNumberToSend.getText().toString());
-                    String str = mSendingRate.getText().toString();
-                    while (str.charAt(0) != '1'){
-                        str = str.substring(1);
-                    }
-                    double sending_rate = Double.valueOf(str);
-                    int taxes = 10;
-                    double result = (number_to_send * 1.0)/sending_rate;
-                    if (result < 500.01) {
-                        taxes = 10;
-                    } else if (result < 2000.01) {
-                        taxes = 14;
-                    } else if (result < 3000.01) {
-                        taxes = 18;
-                    } else if (result < 5000.01) {
-                        taxes = 20;
-                    } else {
-                        taxes = 25;
-                    }
-
-                    double final_result = result - taxes;
-                    if (final_result < 0) {
-                        final_result = 0;
-                    }
-
-                    //TODO
-                    //count textview mResultHalyk
-                    DecimalFormat dff = new DecimalFormat("#.##");
-                    String temp_str = getResources().getString(R.string.halyk_text);
-                    String temp_str1 = getResources().getString(R.string.halyk_tenge);
-                    mResultHalyk.setText(temp_str + " " + String.valueOf(halykDouble) + " " + temp_str1 + " " + String.valueOf(dff.format(halykDouble * final_result)) + " ₸");
-                }
-            }
-        });
-
         mUpdateButton = (Button) findViewById(R.id.update_button);
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -356,10 +261,8 @@ public class MainActivity extends AppCompatActivity {
             TextView sending = (TextView) findViewById(R.id.sending);
             sending.setText(this.getString(R.string.sending) + ":  " + Double.toString(aJsonDouble));
 
-//            //TODO
-//            //set textview of halykbank rate called halyk_bank_rate
-//            TextView mResultHalyk = (TextView) findViewById(R.id.result_halyk);
-//            mResultHalyk.setText(this.getString(R.string.result_halyk) + ":  " + mResultHalyk);
+            //TODO
+            //set textview of halykbank rate called halyk_bank_rate
 
             TextView update_time = (TextView) findViewById(R.id.update_time);
             update_time.setText(this.getString(R.string.update_time) + ":  " + aJsonStr);
