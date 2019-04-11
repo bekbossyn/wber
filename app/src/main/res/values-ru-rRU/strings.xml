@@ -5,6 +5,6 @@
     <string name="update_time">Последнее обновление</string>
     <string name="sending">Текущий курс отправки</string>
     <string name="updated_button">Обновлено</string>
-    <string name="halyk_text" translatable="false">Курс :</string>
+    <string name="halyk_text">Курс :</string>
     <string name="halyk_tenge">в Тенге :</string>
 </resources>
