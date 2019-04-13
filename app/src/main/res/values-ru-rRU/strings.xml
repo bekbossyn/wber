@@ -3,8 +3,7 @@
     <string name="app_name">wber</string>
     <string name="update_button">Обновить</string>
     <string name="update_time">Последнее обновление</string>
-    <string name="sending">Текущий курс отправки</string>
+    <string name="won_rate">Курс Вона</string>
     <string name="updated_button">Обновлено</string>
-    <string name="halyk_text">Курс :</string>
-    <string name="halyk_tenge">в Тенге :</string>
+    <string name="tenge_rate">Курс тенге</string>
 </resources>

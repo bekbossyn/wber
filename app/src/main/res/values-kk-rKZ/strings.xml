@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">wber</string>
-    <string name="sending">Қазіргі жіберу курсы</string>
+    <string name="won_rate">Вон бағамы</string>
     <string name="update_time">Соңғы жаңарту уақыты</string>
     <string name="update_button">Жаңарту</string>
     <string name="updated_button">Жаңартылды</string>
-    <string name="halyk_text">Бағам :</string>
-    <string name="halyk_tenge">Тенгеде :</string>
+    <string name="tenge_rate">Тенге бағамы</string>
 </resources>
