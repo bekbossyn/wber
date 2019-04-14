@@ -90,7 +90,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:inputType="numberDecimal"
-        android:maxLength="7"
+        android:maxLength="8"
         android:text="@string/number"
 
         android:textColor="@color/textColor"
