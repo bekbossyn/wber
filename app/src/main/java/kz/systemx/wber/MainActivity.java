@@ -83,13 +83,13 @@ public class MainActivity extends AppCompatActivity {
                     double sending_rate = Double.valueOf(str);
                     int taxes;
                     double result = (number_to_send * 1.0)/sending_rate;
-                    if (result < 500.01) {
+                    if (result - 10.0 < 500.01) {
                         taxes = 10;
-                    } else if (result < 2000.01) {
+                    } else if (result - 14.0 < 2000.01) {
                         taxes = 14;
-                    } else if (result < 3000.01) {
+                    } else if (result - 18.0 < 3000.01) {
                         taxes = 18;
-                    } else if (result < 5000.01) {
+                    } else if (result - 20.0 < 5000.01) {
                         taxes = 20;
                     } else {
                         taxes = 25;
@@ -133,13 +133,13 @@ public class MainActivity extends AppCompatActivity {
                     double sending_rate = Double.valueOf(str);
                     int taxes;
                     double result = (number_to_send * 1.0)/sending_rate;
-                    if (result < 500.01) {
+                    if (result - 10.0 < 500.01) {
                         taxes = 10;
-                    } else if (result < 2000.01) {
+                    } else if (result - 14.0 < 2000.01) {
                         taxes = 14;
-                    } else if (result < 3000.01) {
+                    } else if (result - 18.0 < 3000.01) {
                         taxes = 18;
-                    } else if (result < 5000.01) {
+                    } else if (result - 20.0 < 5000.01) {
                         taxes = 20;
                     } else {
                         taxes = 25;
@@ -229,8 +229,8 @@ public class MainActivity extends AppCompatActivity {
             sending.setText(getResources().getString(R.string.won_rate) + ":  " + exchange_rate_sp);
             TextView update_time = findViewById(R.id.update_time);
             update_time.setText(this.getString(R.string.update_time) + ":  " + update_time_sp);
-            TextView result_halyk = findViewById(R.id.result_halyk);
-            result_halyk.setText(getResources().getString(R.string.result_halyk) + ":  " + exchange_rate_halyk_sp);
+            TextView result_halyk = findViewById(R.id.receiving);
+            result_halyk.setText(getResources().getString(R.string.tenge_rate) + ":  " + exchange_rate_halyk_sp);
 
 
             int number_to_send = Integer.parseInt(mNumberToSend.getText().toString());
@@ -238,13 +238,13 @@ public class MainActivity extends AppCompatActivity {
             double sending_rate = Double.parseDouble(exchange_rate_sp);
             int taxes;
             double r_result = (number_to_send * 1.0)/sending_rate;
-            if (r_result < 500.01) {
+            if (r_result - 10.0 < 500.01) {
                 taxes = 10;
-            } else if (r_result < 2000.01) {
+            } else if (r_result - 14.0 < 2000.01) {
                 taxes = 14;
-            } else if (r_result < 3000.01) {
+            } else if (r_result - 18.0 < 3000.01) {
                 taxes = 18;
-            } else if (r_result < 5000.01) {
+            } else if (r_result - 20.0 < 5000.01) {
                 taxes = 20;
             } else {
                 taxes = 25;
@@ -296,13 +296,13 @@ public class MainActivity extends AppCompatActivity {
             double sending_rate = aJsonDouble;
             int taxes;
             double r_result = (number_to_send * 1.0)/sending_rate;
-            if (r_result < 500.01) {
+            if (r_result - 10.0 < 500.01) {
                 taxes = 10;
-            } else if (r_result < 2000.01) {
+            } else if (r_result - 14.0 < 2000.01) {
                 taxes = 14;
-            } else if (r_result < 3000.01) {
+            } else if (r_result - 18.0 < 3000.01) {
                 taxes = 18;
-            } else if (r_result < 5000.01) {
+            } else if (r_result - 20.0 < 5000.01) {
                 taxes = 20;
             } else {
                 taxes = 25;
